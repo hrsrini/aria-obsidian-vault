@@ -1,0 +1,62 @@
+# GraphRAG 3.x settings for ARIA Banking Compliance Intelligence
+# Run: python -m graphrag index --root .
+
+completion_models:
+  default_completion_model:
+    api_key: ${OPENAI_API_KEY}
+    model_provider: openai
+    model: gpt-4o-mini
+    call_args:
+      max_tokens: 4000
+      temperature: 0.0
+
+embedding_models:
+  default_embedding_model:
+    api_key: ${OPENAI_API_KEY}
+    model_provider: openai
+    model: text-embedding-3-small
+    call_args:
+      max_tokens: 8191
+
+input:
+  type: text
+  file_pattern: ".*\\.(txt|md)"
+  encoding: utf-8
+
+input_storage:
+  type: file
+  base_dir: ./input
+
+output_storage:
+  type: file
+  base_dir: ./graphrag-output/output
+
+cache:
+  type: json
+  base_dir: ./graphrag-output/cache
+
+reporting:
+  type: file
+  base_dir: ./graphrag-output/logs
+
+chunking:
+  size: 600
+  overlap: 100
+
+extract_graph:
+  entity_types:
+    - Regulation
+    - Statute
+    - Guidance
+    - RiskCategory
+    - RiskProgram
+    - Role
+    - Threshold
+    - Framework
+    - Definition
+    - Regulator
+  max_gleanings: 1
+
+community_reports:
+  max_length: 2000
+  max_input_length: 8000
