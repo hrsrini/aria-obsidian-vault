@@ -1,0 +1,41 @@
+# Environment — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# GraphRAG artifacts (large, regenerated)
+graphrag-output/cache/
+graphrag-output/output/
+graphrag-output/*.parquet
+
+# Documents — raw PDFs are local only
+documents/raw/
+documents/processed/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Railway
+.railway/

@@ -1,0 +1,40 @@
+llm:
+  model: claude-sonnet-4-6
+  api_key: ${ANTHROPIC_API_KEY}
+  api_base: https://api.anthropic.com
+
+entity_extraction:
+  entity_types:
+    - Regulation
+    - Statute
+    - Guidance
+    - RiskCategory
+    - RiskProgram
+    - Role
+    - Threshold
+    - Framework
+    - Definition
+    - Regulator
+  relationship_types:
+    - SUPERSEDES
+    - MODIFIES
+    - APPLIES_TO
+    - THRESHOLD_FOR
+    - REQUIRES
+    - GOVERNS
+    - REFERENCES
+    - DEFINES
+    - IMPLEMENTED_BY
+    - EFFECTIVE_FROM
+
+chunking:
+  size: 600
+  overlap: 100
+  strategy: sentence
+
+community_reports:
+  enabled: true
+
+storage:
+  type: file
+  base_dir: ./graphrag-output
