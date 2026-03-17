@@ -24,6 +24,11 @@ graphrag-output/cache/
 graphrag-output/output/
 graphrag-output/*.parquet
 
+# GraphRAG runtime dirs (created at project root by graphrag index)
+/cache/
+/output/
+/input/
+
 # Documents — raw PDFs are local only
 documents/raw/
 documents/processed/
