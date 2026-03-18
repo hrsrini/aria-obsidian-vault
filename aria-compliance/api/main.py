@@ -32,6 +32,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 load_dotenv()
 
 from retrieval.aria_retrieval import aria_query, _get_supabase
+from api.admin import documents as admin_documents
+from api.admin import intake as admin_intake
+from api.admin import health as admin_health
+from api.admin import tests as admin_tests
+from api.admin import corrections as admin_corrections
+from api.admin import sync as admin_sync
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -48,6 +54,14 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
 )
+
+# Admin routers
+app.include_router(admin_documents.router)
+app.include_router(admin_intake.router)
+app.include_router(admin_health.router)
+app.include_router(admin_tests.router)
+app.include_router(admin_corrections.router)
+app.include_router(admin_sync.router)
 
 # CORS — restrict origins after testing
 app.add_middleware(

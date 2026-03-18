@@ -75,6 +75,12 @@ def main():
 
     steps = []
 
+    # Step 0: Pull latest Obsidian vault from GitHub (auto-committed by Obsidian Git plugin)
+    ok, out = run_step("vault_sync", [sys.executable, "scripts/sync_vault_from_github.py"])
+    steps.append({"step": "vault_sync", "ok": ok})
+    if not ok:
+        print("WARNING: vault sync failed — continuing with cached vault content")
+
     # Step 1: Obsidian vault -> Neo4j
     ok, out = run_step("obsidian_to_graph", [sys.executable, "scripts/obsidian_to_graph.py"])
     steps.append({"step": "obsidian_to_graph", "ok": ok})
