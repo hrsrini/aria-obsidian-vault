@@ -6,6 +6,5 @@ startCommand = "uvicorn api.main:app --host 0.0.0.0 --port $PORT"
 healthcheckPath = "/health"
 restartPolicyType = "on_failure"
 
-[[cron]]
-schedule = "0 2 * * *"
-command = "python scripts/nightly_sync.py"
+# Cron job configured in Railway dashboard:
+# Service → Settings → Cron → "0 2 * * *" → "python scripts/nightly_sync.py"
